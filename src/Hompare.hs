@@ -1,4 +1,4 @@
-module Hest
+module Hompare
 (
 jaroWinkler
 , levenshtein
