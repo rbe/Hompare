@@ -5,7 +5,7 @@ import Text.Printf
 import Control.Exception
 import Control.Concurrent (threadDelay)
 import System.CPUTime
-import Hest
+import Hompare
 
 time :: IO t -> IO t
 time a = do
