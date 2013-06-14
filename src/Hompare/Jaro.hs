@@ -33,7 +33,7 @@ jaro s1 s2
             l2 = length s2
             -- Index s2
             z2 = zip [1..] s2
-            m = foldl (++) [] [charMatch p ((max l1 l2) `div` 2) z2 | p <- zip [1..] s1]
+            m = foldl (++) [] [charMatch p ((max l1 l2) `div` 2 - 1) z2 | p <- zip [1..] s1]
             ml = length m
             t = sum [realToFrac (transposition p z2) / 2.0 | p <- m]
             ml1 = realToFrac ml / realToFrac l1
@@ -43,7 +43,7 @@ jaro s1 s2
             (1 / 3) * (ml1 + ml2 + mtm)
         where
             -- [] of matching characters for 1 character
-            charMatch (p,q) far list = filter (\(x,y) -> x >= p - far && x <= p + far && y == q) list
+            charMatch (p,q) far list = filter (\(x,y) -> x > p - far && x < p + far && y == q) list
             -- # of transpositions for 1 character
             transposition (p,q) list = length $ filter (\(x,y) -> p /= x && q == y) list
 
